@@ -1,0 +1,65 @@
+# Blaque Baux Brittle
+
+**Harvest what's about to expire worthless. Near-expiry, far-out-of-the-money options and leveraged/expiring products with little chance of finishing in-the-money — sell the lottery ticket, or buy it for pennies.**
+
+Brittle is a member of the Blaque Baux family. The [core repo](https://github.com/Carter-Warrens/blaquebaux)
+is the **engine and blueprint**. Brittle points that engine at instruments in their last
+days of life — deep-OTM short-dated options, expiring leveraged/decay products — to harvest
+the premium of things overwhelmingly likely to expire worthless (and, selectively, to buy
+convex tickets for pennies when they're cheap). It inherits the engine's governance
+wholesale, which here is not optional garnish but the entire risk.
+
+> **Not investment advice.** Educational/research software. Systematically selling OTM
+> premium is picking up pennies in front of a steamroller — a single tail can erase years
+> of gains. Nothing here is validated. Defined-risk structures and hard caps are mandatory.
+> See [LICENSE](LICENSE).
+
+```bash
+git clone --recursive https://github.com/Carter-Warrens/blaquebaux-brittle.git
+julia --project=engine -e 'using Pkg; Pkg.instantiate()'   # one-time engine setup
+```
+
+## The thesis
+
+This is a **short-gamma / short-vol theta harvest**: high win-rate and smooth returns in
+calm regimes, ruinous in tails. The base convexity research names the danger precisely —
+short-carry/long-decay strategies bleed the seller nothing in calm and everything in a
+sharp crisis, and the payoff is un-timeable. So Brittle's design is governance-first:
+**defined-risk spreads, not naked shorts**, hard per-name and gross caps, and a tail budget.
+It is the deliberate mirror of **Bleed** — Brittle sells the tail Bleed buys — which makes
+the two a natural internal hedge pair.
+
+## Research plan (Path A — not yet built)
+
+- **Defined-risk OTM premium selling** — short-dated far-OTM credit spreads; measure the
+  full return distribution (skew, tail CVaR), never Sharpe alone.
+- **Expiring-product decay** — leveraged/inverse and dated products near expiry where decay
+  is structural.
+- **Cheap-ticket buying** — the selective long side: convex tickets when premium is
+  mispriced low (a bridge to Bleed).
+- **Tail budgeting & caps** — size so the worst plausible gap is survivable by construction.
+
+Data caveat: options coverage depends on the venue's options API; the tradeable, liquid
+subset is the real universe.
+
+## Status
+**Scaffold.** Engine wired as a submodule; strategy research not yet conducted.
+
+## The Blaque Baux family
+- **Blaque Baux** — base engine + validated slow risk-premium spine.
+- **Blunt** — short-horizon tactical sleeves.
+- **Brash** — highly aggressive (crypto, alternatives).
+- **Bleed** — deeply contrarian; positioned for the tails.
+- **Bottom** — sub-small-cap / penny names.
+- **Brittle** *(this repo)* — near-expiry, far-OTM options/ETFs; the other side of the lottery ticket.
+- **Boom** — mega-cap blue chips (the Magnificent 7 and peers).
+
+## Layout
+```
+engine/     the Blaque Baux platform (git submodule → Carter-Warrens/blaquebaux)
+research/   Path-A strategy sketches (to come)
+live/       governed live drivers (once a sleeve graduates to paper A/B)
+```
+
+## License
+[MIT](LICENSE). © 2026 Carter Warrens.
