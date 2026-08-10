@@ -42,8 +42,30 @@ the two a natural internal hedge pair.
 Data caveat: options coverage depends on the venue's options API; the tradeable, liquid
 subset is the real universe.
 
+## Research — first pass done
+
+Full detail in [`research/README.md`](research/README.md). The scorecard:
+
+| proxy | Sharpe | CAGR | maxDD | skew | Verdict |
+|---|---|---|---|---|---|
+| SVXY (naked short-vol) | +0.42 | **+1%** | **−95%** | **−8.3** | ❌ Sharpe illusion / ruin |
+| PUTW / QYLD (defined-risk) | ~+0.58 | +7–8% | −25/−28% | −1 to −2 | 🟡 survivable, underperforms SPY |
+| SPY (reference) | +0.82 | +14% | −34% | −0.7 | — |
+
+**The synthesis:** the short-vol premium is real (long-vol VIXY bleeds **−49%/yr**) but a trap
+to harvest — naked short-vol (SVXY) captured only ~+1%/yr of it, at a −95% drawdown and −8.3
+skew, because **the tail reclaims all the carry** (the base's convexity law, seller's side). The
+Sharpe is an illusion: SVXY lost ~91% in a *week* in the 2018 volmageddon and survives now only
+because it was re-capped to −0.5×. Defined-risk selling (put-write/covered-call) is the only
+survivable form — but it **underperforms simply holding SPY**. A static hedge can't repair a
+naked short (skew worsens); the fix is defined-risk *by construction*. **Brittle sells the tail
+that Bleed buys** — both lose to the tail held statically; the balanced book pairs a defined-risk
+seller with Bleed's cheap insurance.
+
 ## Status
-**Scaffold.** Engine wired as a submodule; strategy research not yet conducted.
+**Research: first pass complete — naked short-vol rejected; defined-risk selling survives but
+has no edge over the index** (`research/`). The VRP is real but a trap to harvest. No live
+driver. Nothing validated to the spine's bar.
 
 ## The Blaque Baux family
 This repo is one sleeve of the **Blaque Baux** family — a single governed engine steered in
@@ -53,7 +75,7 @@ base/blueprint and holds the [full family roster](https://github.com/Carter-Warr
 ## Layout
 ```
 engine/     the Blaque Baux platform (git submodule → Carter-Warrens/blaquebaux)
-research/   Path-A strategy sketches (to come)
+research/   two Path-A sketches (premium illusion, tail research/   Path-A strategy sketches (to come) hedge) + scorecard
 live/       governed live drivers (once a sleeve graduates to paper A/B)
 ```
 
