@@ -75,7 +75,7 @@ base/blueprint and holds the [full family roster](https://github.com/Carter-Warr
 ## Layout
 ```
 engine/     the Blaque Baux platform (git submodule → Carter-Warrens/blaquebaux)
-research/   two Path-A sketches (premium illusion, tail research/   Path-A strategy sketches (to come) hedge) + scorecard
+research/   two Path-A sketches (premium illusion, tail and hedge) + scorecard
 live/       governed live drivers (once a sleeve graduates to paper A/B)
 ```
 
