@@ -1,7 +1,7 @@
 # Blaque Baux Brittle — research
 
 First-pass Path-A research on the short-volatility / premium-selling sleeve — the SELL side of
-convexity, and the mirror of [Bleed](https://github.com/Carter-Warrens/blaquebaux-bleed).
+convexity, and the mirror of [Bleed](https://github.com/blaque-baux/bleed).
 **Data caveat:** a true OTM-option-selling backtest needs historical option chains Alpaca
 lacks; this pass uses ETF proxies (SVXY short-vol, PUTW put-write, QYLD/XYLD covered-call,
 VIXY long-vol). All sketches read Alpaca SIP daily bars, are read-only, print their results.

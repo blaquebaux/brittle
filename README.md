@@ -2,7 +2,7 @@
 
 **Harvest what's about to expire worthless. Near-expiry, far-out-of-the-money options and leveraged/expiring products with little chance of finishing in-the-money — sell the lottery ticket, or buy it for pennies.**
 
-Brittle is a member of the Blaque Baux family. The [core repo](https://github.com/Carter-Warrens/blaquebaux)
+Brittle is a member of the Blaque Baux family. The [core repo](https://github.com/blaque-baux/base)
 is the **engine and blueprint**. Brittle points that engine at instruments in their last
 days of life — deep-OTM short-dated options, expiring leveraged/decay products — to harvest
 the premium of things overwhelmingly likely to expire worthless (and, selectively, to buy
@@ -15,7 +15,7 @@ wholesale, which here is not optional garnish but the entire risk.
 > See [LICENSE](LICENSE).
 
 ```bash
-git clone --recursive https://github.com/Carter-Warrens/blaquebaux-brittle.git
+git clone --recursive https://github.com/blaque-baux/brittle.git
 julia --project=engine -e 'using Pkg; Pkg.instantiate()'   # one-time engine setup
 ```
 
@@ -81,12 +81,12 @@ honest research, reproducible evidence, and execution you can trust — is why C
 
 ## The Blaque Baux family
 This repo is one sleeve of the **Blaque Baux** family — a single governed engine steered in
-many directions. The [core repo](https://github.com/Carter-Warrens/blaquebaux) is the
-base/blueprint and holds the [full family roster](https://github.com/Carter-Warrens/blaquebaux#the-blaque-baux-family).
+many directions. The [core repo](https://github.com/blaque-baux/base) is the
+base/blueprint and holds the [full family roster](https://github.com/blaque-baux/base#the-blaque-baux-family).
 
 ## Layout
 ```
-engine/     the Blaque Baux platform (git submodule → Carter-Warrens/blaquebaux)
+engine/     the Blaque Baux platform (git submodule → blaque-baux/base)
 research/   two Path-A sketches (premium illusion, tail and hedge) + scorecard
 live/       governed live drivers (once a sleeve graduates to paper A/B)
 ```
